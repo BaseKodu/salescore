@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+    /*color: #c9c6c6;*/
+    background: var(--fallback-b1, oklch(var(--b1) / 1));
+    color: var(--fallback-bc, oklch(var(--bc) / 1));
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #c9c6c6;
+}
+
+.card {
+    background-color: #f1f1f1;
+}
