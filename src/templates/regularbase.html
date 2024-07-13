@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_navbar %}
+<div class="bg-primary text-primary-content flex justify-between items-center">
+  <div class="navbar-start hidden lg:flex">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+      </div>
+    </div>
+    <ul class="menu menu-horizontal">
+      <li><a>Home</a></li>
+      <li>
+        <details id="inventoryDropdown">
+          <summary>Inventory</summary>
+          <ul class="p-0 bg-primary dropdown">
+            <li><a>Add Inventory</a></li>
+            <li><a>Inventory List</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details id="invoiceDropdown">
+          <summary>Add an Invoice</summary>
+          <ul class="p-0 bg-primary dropdown">
+            <li><a>Add Inventory</a></li>
+            <li><a>Inventory List</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <div class="navbar-end flex">
+    <div>
+      <span>Settings</span>
+    </div>
+  </div>
+</div>
+{% endblock %}
+    
+{% block script %}
+<script>
+  document.addEventListener('click', function(event) {
+    // Get all details elements
+    const dropdowns = document.querySelectorAll('details');
+
+    // Loop through each details element
+    dropdowns.forEach((dropdown) => {
+      // Check if the clicked element is inside a dropdown
+      const isClickInside = dropdown.contains(event.target);
+
+      // If the click was outside the dropdown, close it
+      if (!isClickInside) {
+        dropdown.removeAttribute('open');
+      } else {
+        // If the dropdown is open, close all other dropdowns
+        dropdowns.forEach((otherDropdown) => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.removeAttribute('open');
+          }
+        });
+      }
+    });
+  });
+</script>
+
+{% endblock %}

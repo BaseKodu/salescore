@@ -1,0 +1,42 @@
+{% extends 'regularbase.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="tab-container">
+        <div class="tab-vertical">
+        <button class="tab tab-active" data-target="#tab-content-1">Tab 1</button>
+        <button class="tab" data-target="#tab-content-2">Tab 2</button>
+        <button class="tab" data-target="#tab-content-3">Tab 3</button>
+        </div>
+        <div class="flex-grow p-4">
+        <div id="tab-content-1" class="tab-content">
+            <h1>Content for Tab 1</h1>
+            <p>This is the content for the first tab.</p>
+        </div>
+        <div id="tab-content-2" class="tab-content hidden">
+            <h1>Content for Tab 2</h1>
+            <p>This is the content for the second tab.</p>
+        </div>
+        <div id="tab-content-3" class="tab-content hidden">
+            <h1>Content for Tab 3</h1>
+            <p>This is the content for the third tab.</p>
+        </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('tab-active'));
+            tab.classList.add('tab-active');
+
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            document.querySelector(tab.dataset.target).classList.remove('hidden');
+        });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% load form_extras %}
+{% block content %}
+    <div class="container mt-12">
+        <div class="row">
+            <div class="col-sm-8 offset-2">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="card lg:card-side bg-base-20 shadow-xl container px-0">
+                        <div class="card-body">
+                            <h2 class="card-title m-auto">Registration</h2>
+                            <div class="row">
+                                <div class="col-sm-6 offset-3">
+                                    <label class="text-black-50">Email</label>
+                                    <input type="email" name="email" placeholder="" class="input input-bordered w-full max-w-xs rounded-3" />
+                                </div>
+                                <div class="col-sm-6 offset-3">
+                                    <p>{{ form.email.errors }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 offset-3">
+                                    <label class="text-black-50">First Name</label>
+                                    <input type="text" name="first_name" placeholder="" class="input input-bordered w-full max-w-xs rounded-3" />
+                                </div>
+                                <div class="col-sm-6 offset-3">
+                                    <p>{{form.first_name.errors}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 offset-3">
+                                    <label class="text-black-50">Company Name</label>
+                                    <input type="text" name="company_name" placeholder="" class="input input-bordered w-full max-w-xs rounded-3" />
+                                </div>
+                                <div class="col-sm-6 offset-3">
+                                    <p>{{form.company_name.errors}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 offset-3 ">
+                                    <label class="text-black-50">Password</label>
+                                    <input type="password" name="password1" placeholder="" name="password1" class="input input-bordered w-full max-w-xs rounded-3" />
+                                </div>
+                                <div class="col-sm-6 offset-3">
+                                    <p>{{form.password1.errors}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 offset-3">
+                                    <label class="text-black-50">Password Confirmation</label>
+                                    <input type="password" name="password2" placeholder="" name="password2" class="input input-bordered w-full max-w-xs rounded-3" />
+                                </div>
+                                <div class="col-sm-6 offset-3">
+                                    <p>{{form.password2.errors}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm=6 offset-3">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+.tab-container {
+    display: flex;
+    height: 100vh;
+  }
+  .tab-vertical {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e5e7eb;
+  }
+  .tab-vertical .tab {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+  }

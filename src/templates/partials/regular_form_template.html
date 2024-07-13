@@ -1,0 +1,52 @@
+<!-- templates/_form.html -->
+{% load custom_filters %}
+{{ form.non_field_errors }}
+{% for field in form %}
+    {% if field.errors %}
+        {% with field.field.widget.attrs.class as widget_class %}
+            {% if widget_class %}
+                {% with widget_class|add:' is-invalid' as classes %}
+                    <div class="form-group row mt-1 mb-1">
+                        <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">{{ field.label }}</label>
+                        <div class="col-sm-8">
+                            {{ field|add_class:classes }}
+                            {% for error in field.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endwith %}
+            {% else %}
+                <div class="form-group row mt-1 mb-1">
+                    <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">{{ field.label }}</label>
+                    <div class="col-sm-8">
+                        {{ field|add_class:'form-control is-invalid' }}
+                        {% for error in field.errors %}
+                            <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+    {% else %}
+        {% with field.field.widget.attrs.class as widget_class %}
+            {% if widget_class %}
+                {% with widget_class|add:'' as classes %}
+                    <div class="form-group row mt-1 mb-1">
+                        <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">{{ field.label }}</label>
+                        <div class="col-sm-8">
+                            {{ field|add_class:classes }}
+                        </div>
+                    </div>
+                {% endwith %}
+            {% else %}
+                <div class="form-group row mt-1 mb-1">
+                    <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">{{ field.label }}</label>
+                    <div class="col-sm-8">
+                        {{ field|add_class:'form-control' }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+    {% endif %}
+{% endfor %}
